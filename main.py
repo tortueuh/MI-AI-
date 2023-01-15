@@ -90,7 +90,7 @@ model.summary()
 
 # loading last weights, can be deleted #
 
-model.load_weights("weights2.h5")
+model.load_weights("DATAS/weights2.h5")
 
 # compile and fit the model #
 
@@ -107,7 +107,7 @@ history = model.fit(R_DATA_SETS[0], R_DATA_SETS[1],
 
 # saving new weights as weights2 in main directory #
 
-model.save_weights("weights2.h5")
+model.save_weights("DATAS/weights2.h5")
 
 #-------- PYPLOT GRAPHICS --------#
 
