@@ -13,20 +13,11 @@ words_data_row = numpy.empty(0, dtype=str)
 words_data_100 = []
 noised_collections = []
 
-noise = numpy.empty(0, dtype=str)
 
 # ALPHABET
 
 DIKT = {" ":0,"a":1,"b":2,"c":3,"d":4,"e":5,"f":6,"g":7,"h":8,"i":9,"j":10,"k":11,"l":12,"m":13,"n":14,"o":15,"p":16,"q":17,"r":18,"s":19,"t":20,"u":21,"v":22,"w":23,"x":24,"y":25,"z":26,"é":27,"è":28,"ç":29,"à":30,"ù":31,"â":32,"ô":33,"ê":34,"î":35,"û":36,"ë":37,"6":0,"(":0,")":0,"[":0,"]":0,":":0,"ï":38}
 
-# FUNCTIONS
-
-def noise(proportion,word,formation):
-    for i in range(len(word)):
-        if random.randint(0,100) > proportion:
-            word[i] = random.randint(0,formation[0])/formation[1]
-
-    return word 
 
 
 #------- TOKENIZING WORDS AND LINES -------#
@@ -93,28 +84,16 @@ words_data_100 = numpy.unique(words_data_100,axis=0)
 
 print(len(words_data_100),len(words_data_row))
 
-#------- NOISING AND CREATING NOISED COLLECTIONS -------#
-
-for i in range(0,10):
-    noised_collections.append([i*10,words_data_100.copy()])
-    for tok_word in noised_collections[i][1]:
-        tok_word = noise(noised_collections[i][0],tok_word,[38,1])
-
-
 
 #-------  RETURN TO STRING -------#
 
 #** creating new lists **#
 S_words_data_100 = []
-S_noised_collections = []
-for i in range(0,10):
-    S_noised_collections.append([i*10,[]])
 
 #** turning list to string **#
 for i in range(len(words_data_100)):
     S_words_data_100.append(str(words_data_100[i]))
-    for j in range(10): S_noised_collections[j][1].append(str(noised_collections[j][1][i]))
-
+    
 
 #------- SAVING TO CSV FILE -------#
 
